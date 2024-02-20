@@ -1,0 +1,25 @@
+﻿@model List<Enfermo>
+
+<h1>Listado de enfermos</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Apellido</td>
+            <td>Direccion</td>
+            <td>Fecha de Nacimiento</td>
+            <td>Genero</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Enfermo e in Model)
+        {
+            <tr>
+                <td>@e.Apellido</td>
+                <td>@e.Direccion</td>
+                <td>@e.FechaNacimiento</td>
+                <td>@e.Genero</td>
+            </tr>
+        }
+    </tbody>
+</table>
