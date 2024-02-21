@@ -1,0 +1,51 @@
+﻿@model TrabajadoresModel
+@{
+    List<string> oficiosList =
+            ViewData["OFICIOS"] as List<string>;
+}
+
+<h1>Procedimiento salida Trabajadores</h1>
+
+<a asp-controller="Trabajadores" asp-action="Index" 
+class="btn btn-success">
+    Volver
+</a>
+
+<form method="post">
+    <label>Seleccione un oficio</label>
+    <select name="oficio" class="form-control">
+        @foreach(string of in oficiosList)
+        {
+            <option>@of</option>
+        }
+    </select>
+    <br />
+    <button class="btn btn-outline-info">Buscar</button>
+</form>
+
+@if(Model != null)
+{
+    <h2>Personas: @Model.Personas</h2>
+    <h2>Media salarial: @Model.MediaSalarial</h2>
+    <h2>Suma salarial @Model.SumaSalarial</h2>
+    <br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Trabajador tr in Model.Trabajadores)
+            {
+                <tr>
+                    <td>@tr.Apellido</td>
+                    <td>@tr.Oficio</td>
+                    <td>@tr.Salario</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

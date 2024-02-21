@@ -9,9 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 string connectionString = builder.Configuration.GetConnectionString("SqlEnfermos");
+builder.Services.AddTransient<RepositoryTrabajadores>();
+builder.Services.AddTransient<RepositoryViewEmpleados>();
 builder.Services.AddTransient<RepositoryEnfermos>();
 builder.Services.AddTransient<RepositoryDoctores>();
-builder.Services.AddDbContext<EnfermosContext>
+builder.Services.AddDbContext<HospitalContext>
     (options => options.UseSqlServer(connectionString));
 
 var app = builder.Build();
